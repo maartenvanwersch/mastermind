@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mastermind"
+version = "0.1.0"
+description = ""
+authors = ["Maarten van Wersch <66728012+maartenvanwersch@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^7.4.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
