@@ -21,26 +21,15 @@ def test_given_all_well_placed_colours_of_different_lengths_return_all_well_plac
     assert result == expected_output
 
 
-def test_given_all_wrong_placed_colours_return_all_wrong_placed():
+def test_given_all_wrong_colours_return_no_well_placed_and_no_misplaced():
     secret = ["red", "blue", "red"]
-    guess = ["blue", "red", "blue"]
+    guess = ["green", "yellow", "white"]
     result = evaluate(secret, guess)
-    assert result == [0, 3]
+    assert result == [0, 0]
 
 
-@pytest.mark.parametrize("secret, guess, expected_output", [
-    (["green", "red", "blue"], ["blue", "blue", "green"], [0, 3]),
-    (["green", "red", "blue", "yellow"], ["blue", "blue", "green", "white"], [0, 4]),
-    (["blue", "red"], ["yellow", "white"], [0, 2]),
-    (["blue"], ["red"], [0, 1]),
-])
-def test_given_all_wrong_placed_colours_of_different_lengths_return_all_wrong_placed(secret, guess, expected_output):
-    result = evaluate(secret, guess)
-    assert result == expected_output
-
-
-def test_given_empty_guess_return_all_wrong_placed():
+def test_given_empty_guess_return_no_right_placed_and_no_misplaced():
     secret = ["red", "blue"]
     guess = []
-    assert evaluate(secret, guess) == [0, 2]
+    assert evaluate(secret, guess) == [0, 0]
 
