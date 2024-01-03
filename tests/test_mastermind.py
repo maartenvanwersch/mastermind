@@ -37,3 +37,10 @@ def test_given_all_wrong_placed_colours_return_all_wrong_placed():
 def test_given_all_wrong_placed_colours_of_different_lengths_return_all_wrong_placed(secret, guess, expected_output):
     result = evaluate(secret, guess)
     assert result == expected_output
+
+
+def test_given_empty_guess_return_all_wrong_placed():
+    secret = ["red", "blue"]
+    guess = []
+    assert evaluate(secret, guess) == [0, 2]
+
