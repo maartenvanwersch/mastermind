@@ -3,5 +3,7 @@ def evaluate(secret, guess):
     for count, value in enumerate(secret):
         if guess[count] == value:
             result[0] += 1
+        else:
+            result[1] += 1
     return result
 

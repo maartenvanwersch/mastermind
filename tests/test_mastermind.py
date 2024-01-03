@@ -21,3 +21,8 @@ def test_given_all_well_placed_colours_of_different_lengths_return_all_well_plac
     assert result == expected_output
 
 
+def test_given_all_wrong_placed_colours_return_all_wrong_placed():
+    secret = ["red", "blue", "red"]
+    guess = ["blue", "red", "blue"]
+    result = evaluate(secret, guess)
+    assert result == [0, 3]
