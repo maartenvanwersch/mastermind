@@ -1,7 +1,7 @@
 def evaluate(secret, guess):
     correct_guessed_indices = find_matching_positions(secret, guess)
-    misplaced_list = find_overlap_after_removing_indices(correct_guessed_indices, guess, secret)
-    return [len(correct_guessed_indices), len(misplaced_list)]
+    misplaced = find_overlap_after_removing_indices(correct_guessed_indices, guess, secret)
+    return [len(correct_guessed_indices), len(misplaced)]
 
 
 def find_overlap_after_removing_indices(indices_to_remove, guess, secret):
