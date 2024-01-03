@@ -1,14 +1,13 @@
 def evaluate(secret, guess):
     correct_guessed_indices = find_matching_positions(secret, guess)
-    misplaced_list = find_misplaced(correct_guessed_indices, guess, secret)
+    misplaced_list = find_overlap_after_removing_indices(correct_guessed_indices, guess, secret)
     return [len(correct_guessed_indices), len(misplaced_list)]
 
 
-def find_misplaced(correct_guessed_indices, guess, secret):
-    filtered_secret = remove_indices(secret, correct_guessed_indices)
-    filtered_guess = remove_indices(guess, correct_guessed_indices)
-    misplaced_list = find_overlap(filtered_secret, filtered_guess)
-    return misplaced_list
+def find_overlap_after_removing_indices(indices_to_remove, guess, secret):
+    filtered_secret = remove_indices(secret, indices_to_remove)
+    filtered_guess = remove_indices(guess, indices_to_remove)
+    return find_overlap(filtered_secret, filtered_guess)
 
 
 def find_matching_positions(list1, list2):
