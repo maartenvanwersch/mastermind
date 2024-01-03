@@ -33,3 +33,8 @@ def test_given_empty_guess_return_no_right_placed_and_no_misplaced():
     guess = []
     assert evaluate(secret, guess) == [0, 0]
 
+
+def test_given_all_misplaced_colours_return_all_misplaced_colours():
+    secret = ["red", "blue"]
+    guess = ["blue", "red"]
+    assert evaluate(secret, guess) == [0, 2]
