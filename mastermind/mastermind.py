@@ -1,2 +1,7 @@
 def evaluate(secret, guess):
-    return [3, 0]
+    result = [0, 0]
+    for count, value in enumerate(secret):
+        if guess[count] == value:
+            result[0] += 1
+    return result
+
