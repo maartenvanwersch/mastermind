@@ -28,10 +28,16 @@ def test_given_all_wrong_colours_return_no_well_placed_and_no_misplaced():
     assert result == [0, 0]
 
 
-def test_given_empty_guess_return_no_right_placed_and_no_misplaced():
-    secret = ["red", "blue"]
-    guess = []
-    assert evaluate(secret, guess) == [0, 0]
+@pytest.mark.parametrize("secret, guess", [
+    (["blue", "red", "blue"], ["blue", "red"]),
+    (["blue", "red", "blue", "blue"], ["blue", "red"]),
+    (["blue", "red"], ["blue", "red", "green", "yellow"]),
+    (["blue"], []),
+])
+def test_given_unequal_guess_and_secret_length_return_value_error(secret, guess):
+    with pytest.raises(ValueError) as exc_info:
+        evaluate(secret, guess)
+    assert str(exc_info.value) == "Guess and secret lists length are not equal"
 
 
 def test_given_all_misplaced_colours_return_all_misplaced_colours():

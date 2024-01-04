@@ -1,4 +1,6 @@
 def evaluate(secret, guess):
+    if len(secret) != len(guess):
+        raise ValueError("Guess and secret lists length are not equal")
     correct_guessed_indices = find_matching_positions(secret, guess)
     misplaced = find_overlap_after_removing_indices(correct_guessed_indices, guess, secret)
     return [len(correct_guessed_indices), len(misplaced)]
